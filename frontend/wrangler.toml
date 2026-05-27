@@ -1,0 +1,5 @@
+name = "self-wellness"
+compatibility_date = "2024-01-01"
+
+[env.production]
+# Set VITE_API_URL in Cloudflare Pages dashboard → Settings → Environment Variables
