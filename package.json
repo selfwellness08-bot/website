@@ -8,6 +8,11 @@
     "dev:backend": "npm --prefix backend run build && npm --prefix backend start",
     "build:frontend": "npm --prefix frontend run build",
     "build:backend": "npm --prefix backend run build",
-    "db:push": "npm --prefix backend run db:push"
+    "db:push": "npm --prefix backend run db:push",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.95.0"
   }
 }
