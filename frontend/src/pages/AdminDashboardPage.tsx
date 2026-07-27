@@ -922,7 +922,7 @@ const PdfImportModal: React.FC<{
       for (let i = 1; i <= Math.min(pdf.numPages, 5); i++) {
         const pg = await pdf.getPage(i);
         const content = await pg.getTextContent();
-        extracted += content.items.map((item) => ("str" in item ? (item as { str?: string }).str || "" : "")).join(" ") + "\n";
+        extracted += content.items.map((item: any) => ("str" in item ? (item as { str?: string }).str || "" : "")).join(" ") + "\n";
       }
       setText(extracted.trim());
     } catch { toast("Failed to read PDF", "error"); }
