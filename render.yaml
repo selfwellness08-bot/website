@@ -1,0 +1,29 @@
+services:
+  # Combined Backend + Frontend
+  - type: web
+    name: self-wellness
+    runtime: node
+    buildCommand: cd frontend && npm install && npm run build && cd ../backend && npm install && npm run build
+    startCommand: cd backend && npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: self-wellness-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@selfwellness.com
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+
+  # PostgreSQL Database
+  - type: postgresql
+    name: self-wellness-db
+    plan: free
+    databaseName: self_wellness
+    ipAllowList: []
